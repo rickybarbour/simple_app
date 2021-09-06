@@ -85,7 +85,7 @@ jobs:
          name: Deploy
          command: |
            # Login to deployment server and run deployment script
-           ssh root@165.232.110.245 -p 3023 -oStrictHostKeyChecking=no "deploy-container rickybarbour/circleci-example:latest"
+           ssh root@161.35.120.84 -p 3023 -oStrictHostKeyChecking=no "deploy-container rickybarbour/circleci-example:latest"
 
 # Orchestrate our job run sequence
 workflows:
