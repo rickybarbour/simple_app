@@ -13,14 +13,14 @@ jobs:
          name: Docker Build
          command: |
            # Build image based on commit sha
-           docker build --build-arg commit=$CIRCLE_SHA1 -t aturnerbtl/circleci-example:$CIRCLE_SHA1 .
+           docker build --build-arg commit=$CIRCLE_SHA1 -t rickybarbour/circleci-example:$CIRCLE_SHA1 .
      - run:
          name: Docker Push
          command: |
            # Login to docker registery
            echo $DOCKER_TOKEN | docker login --username $DOCKER_USERNAME --password-stdin
            # Push build to repository
-           docker push aturnerbtl/circleci-example:$CIRCLE_SHA1
+           docker push rickybarbour/circleci-example:$CIRCLE_SHA1
 
  # Test and retag container
  test:
