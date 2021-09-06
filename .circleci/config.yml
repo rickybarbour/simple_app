@@ -81,11 +81,13 @@ jobs:
            # Install openssh-client
            apt update -y -qq
            apt install -y -qq openssh-client
+           snap install docker
+           docker pull rickybarbour/circleci-example
      - run:
          name: Deploy
          command: |
            # Login to deployment server and run deployment script
-           ssh root@161.35.120.84 -oStrictHostKeyChecking=no "deploy-container rickybarbour/circleci-example:latest"
+           ssh root@161.35.120.84 -oStrictHostKeyChecking=no "docker run --publish 80:80 rickybarbour/circleci-example:latest"
 
 # Orchestrate our job run sequence
 workflows:
