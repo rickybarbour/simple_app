@@ -68,24 +68,24 @@ jobs:
          path: test-results
 
  # Deploy container
-# deploy:
-#   docker:
-#     - image: ubuntu:18.04
-#   steps:
-#     - add_ssh_keys:
-#          fingerprints:
-#            - "c5:90:15:4e:f7:01:47:98:7f:f3:fa:ee:93:7e:f0:c9"
-#     - run:
-#         name: Install Depenancies
-#         command: |
-#           # Install openssh-client
-#           apt update -y -qq
-#           apt install -y -qq openssh-client
-#     - run:
-#         name: Deploy
-#         command: |
-#           # Login to deployment server and run deployment script
-#           ssh deploy@165.232.110.245 -p 3023 -oStrictHostKeyChecking=no "deploy-container rickybarbour/circleci-example:latest"
+ deploy:
+   docker:
+     - image: ubuntu:18.04
+   steps:
+     - add_ssh_keys:
+          fingerprints:
+            - "a3:0f:fd:fd:93:e9:45:65:2f:c3:d5:d2:19:eb:7f:9b"
+     - run:
+         name: Install Depenancies
+         command: |
+           # Install openssh-client
+           apt update -y -qq
+           apt install -y -qq openssh-client
+     - run:
+         name: Deploy
+         command: |
+           # Login to deployment server and run deployment script
+           ssh root@165.232.110.245 -p 3023 -oStrictHostKeyChecking=no "deploy-container rickybarbour/circleci-example:latest"
 
 # Orchestrate our job run sequence
 workflows:
@@ -95,6 +95,6 @@ workflows:
       - test:
           requires:
             - build
- #     - deploy:
- #         requires:
- #           - test
+      - deploy:
+          requires:
+            - test
