@@ -81,7 +81,6 @@ jobs:
            # Install openssh-client
            apt update -y -qq
            apt install -y -qq openssh-client
-           docker pull rickybarbour/circleci-example
      - run:
          name: Deploy
          command: |
