@@ -85,7 +85,7 @@ jobs:
          name: Deploy
          command: |
            # Login to deployment server and run deployment script
-           ssh root@161.35.120.84 -oStrictHostKeyChecking=no "docker run --publish 80:80 rickybarbour/circleci-example:latest"
+           ssh root@161.35.120.84 -oStrictHostKeyChecking=no "bash deploy.sh"
 
 # Orchestrate our job run sequence
 workflows:
